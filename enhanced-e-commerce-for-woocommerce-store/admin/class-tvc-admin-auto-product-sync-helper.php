@@ -112,8 +112,8 @@ if ( ! class_exists( 'TVC_Admin_Auto_Product_sync_Helper' ) ) {
      * update last product sync data in DB table "ee_product_sync_data"
      */
     public function update_last_sync_in_db(){
-      $ee_prod_mapped_cats = unserialize(get_option('ee_prod_mapped_cats'));
-      $ee_prod_mapped_attrs = unserialize(get_option('ee_prod_mapped_attrs'));  
+      $ee_prod_mapped_cats = maybe_unserialize(get_option('ee_prod_mapped_cats'));
+      $ee_prod_mapped_attrs = maybe_unserialize(get_option('ee_prod_mapped_attrs'));  
       if($ee_prod_mapped_cats != "" && $ee_prod_mapped_attrs != "" &&!empty($ee_prod_mapped_cats)){
         global $wpdb; 
         $ee_product_sync_data =$wpdb->prefix ."ee_product_sync_data";    
@@ -165,7 +165,7 @@ if ( ! class_exists( 'TVC_Admin_Auto_Product_sync_Helper' ) ) {
      */
     public function update_last_sync_in_db_batch_wise($products){
       try {
-        $ee_prod_mapped_attrs = unserialize(get_option('ee_prod_mapped_attrs'));  
+        $ee_prod_mapped_attrs = maybe_unserialize(get_option('ee_prod_mapped_attrs'));  
         if( $ee_prod_mapped_attrs != "" ){
           global $wpdb; 
           $product_ids = implode(',', array_column($products, 'w_product_id'));
@@ -197,7 +197,7 @@ if ( ! class_exists( 'TVC_Admin_Auto_Product_sync_Helper' ) ) {
      */
     public function update_product_status_pre_sync_data($products){
       try {
-        $ee_prod_mapped_attrs = unserialize(get_option('ee_prod_mapped_attrs'));  
+        $ee_prod_mapped_attrs = maybe_unserialize(get_option('ee_prod_mapped_attrs'));  
         if( $ee_prod_mapped_attrs != "" ){
           foreach($products as $product) {
             $t_data = array(

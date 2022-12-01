@@ -85,7 +85,7 @@ class Con_Settings{
     $this->ga_EC = get_option("ga_EC");
     $this->conversio_send_to = get_option('ee_conversio_send_to');
 
-    $remarketing = unserialize(get_option('ee_remarketing_snippets'));
+    $remarketing = maybe_unserialize(get_option('ee_remarketing_snippets'));
     if(!empty($remarketing) && isset($remarketing['snippets']) && esc_attr($remarketing['snippets'])){
       $this->remarketing_snippets = base64_decode($remarketing['snippets']);
       $this->remarketing_snippet_id = sanitize_text_field(isset($remarketing['id'])?esc_attr($remarketing['id']):"");

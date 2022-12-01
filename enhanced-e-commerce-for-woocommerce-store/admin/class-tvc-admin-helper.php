@@ -398,7 +398,7 @@ Class TVC_Admin_Helper{
 		if(!empty($this->ee_options_data)){
 			return $this->ee_options_data;
 		}else{
-			$this->ee_options_data = unserialize(get_option('ee_api_data'));
+			$this->ee_options_data = maybe_unserialize(get_option('ee_api_data'));
 			return $this->ee_options_data;
 		}
 	} 
@@ -420,7 +420,7 @@ Class TVC_Admin_Helper{
    * get additional data from DB
    */
 	public function get_ee_additional_data(){		
-		$this->ee_additional_data = unserialize(get_option('ee_additional_data'));
+		$this->ee_additional_data = maybe_unserialize(get_option('ee_additional_data'));
 		return $this->ee_additional_data;		
 	}
 	
@@ -434,7 +434,7 @@ Class TVC_Admin_Helper{
 		if(!empty($this->e_options_settings)){
 			return $this->e_options_settings;
 		}else{
-			$this->e_options_settings = unserialize(get_option('ee_options'));
+			$this->e_options_settings = maybe_unserialize(get_option('ee_options'));
 			return $this->e_options_settings;
 		}
 	}
@@ -1036,7 +1036,7 @@ Class TVC_Admin_Helper{
 		update_option("ee_msg_nofifications", serialize( $ee_msg_list ));
 	}
   public function get_ee_msg_nofification_list(){
-  	return unserialize(get_option('ee_msg_nofifications'));
+  	return maybe_unserialize(get_option('ee_msg_nofifications'));
   }
   
   public function active_licence($licence_key, $subscription_id){

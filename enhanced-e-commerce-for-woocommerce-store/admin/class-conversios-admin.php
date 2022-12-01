@@ -59,7 +59,7 @@ if ( ! class_exists( 'Conversios_Admin' ) ) {
      * @since    1.0.0
      */
     public function action_woocommerce_order_refunded($order_id, $refund_id) {
-      $data = unserialize(get_option('ee_options')); 
+      $data = maybe_unserialize(get_option('ee_options')); 
       if (empty($data['ga_eeT']) ||
         get_post_meta($order_id, "tvc_tracked_refund", true) == 1  || $this->plan_id == 1){
         return;
@@ -106,7 +106,7 @@ if ( ! class_exists( 'Conversios_Admin' ) ) {
      * @since    1.0.0
      */
     public function woocommerce_partial_order_refunded($order_id, $refund_id) {
-      $data = unserialize(get_option('ee_options'));
+      $data = maybe_unserialize(get_option('ee_options'));
       if (empty($data['ga_eeT']) || $this->plan_id == 1){
         return;
       }

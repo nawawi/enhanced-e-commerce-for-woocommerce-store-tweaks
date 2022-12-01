@@ -350,7 +350,7 @@ class TVC_Ajax_File extends TVC_Ajax_Calls {
       $product_db_batch_size = 200; // batch size to insert in database
       $TVC_Admin_DB_Helper = new TVC_Admin_DB_Helper();
       $prouct_pre_sync_table = esc_sql( $wpdb->prefix ."ee_prouct_pre_sync_data" );
-      $mappedCats = unserialize(get_option('ee_prod_mapped_cats'));
+      $mappedCats = maybe_unserialize(get_option('ee_prod_mapped_cats'));
       if (!empty($ee_additional_data) && isset($ee_additional_data['is_mapping_update']) && $ee_additional_data['is_mapping_update'] == true) {
         // Add products in product pre sync table
         if(!empty($mappedCats)){

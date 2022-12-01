@@ -556,7 +556,7 @@ if ( ! class_exists( 'TVCProductSyncHelper' ) ) {
 			                  </div>
 			                </div>
 			                <?php                      
-                      $ee_mapped_attrs = unserialize(get_option('ee_prod_mapped_attrs'));
+                      $ee_mapped_attrs = maybe_unserialize(get_option('ee_prod_mapped_attrs'));
 			                $wooCommerceAttributes = $this->wooCommerceAttributes();
 			                foreach ($this->TVC_Admin_Helper->get_gmcAttributes() as $key => $attribute) {
 			                  $sel_val="";

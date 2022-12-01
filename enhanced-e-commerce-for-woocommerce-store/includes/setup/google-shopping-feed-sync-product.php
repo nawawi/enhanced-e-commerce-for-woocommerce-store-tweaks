@@ -81,7 +81,7 @@ public function create_form(){
   $total_que_products = $wpdb->get_var("SELECT COUNT(*) as a FROM $tablename");
   $total_sync_products = $wpdb->get_var("SELECT COUNT(*) as a FROM $tablename where `status` = 1");
   $last_update_date_obj = $wpdb->get_row("SELECT update_date FROM $tablename where `status` = 1  ORDER BY update_date DESC");
-  $prod_batch_response = unserialize(get_option('ee_prod_response'));
+  $prod_batch_response = maybe_unserialize(get_option('ee_prod_response'));
   $imin = $rhr = $rsec = $rmin = $sec = $total_batch_size = $total_pending_pro = $total_batches = $total_seconds = 0;
   $min = 1;
   if (!empty($last_update_date_obj)) {

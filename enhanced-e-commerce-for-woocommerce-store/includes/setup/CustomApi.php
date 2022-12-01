@@ -59,7 +59,7 @@ class CustomApi{
     }
 
     public function is_allow_call_api(){
-        $ee_options_data = unserialize(get_option('ee_options'));
+        $ee_options_data = maybe_unserialize(get_option('ee_options'));
         if(isset($ee_options_data['subscription_id'])) {
             return true;
         } else {
@@ -78,7 +78,7 @@ class CustomApi{
             "Content-Type" => "application/json"
           );
 
-          $options = unserialize(get_option('ee_options'));
+          $options = maybe_unserialize(get_option('ee_options'));
           $fb_pixel_enable = "0";
           if(isset($options['fb_pixel_id']) && $options['fb_pixel_id'] != ""){
             $fb_pixel_enable = "1";
@@ -94,7 +94,7 @@ class CustomApi{
                 "fb_pixel_enable" => $fb_pixel_enable,
                 "app_verstion" => PLUGIN_TVC_VERSION,
                 "domain" => esc_url_raw(get_site_url()),
-                "product_settings" => unserialize(get_option('ee_options')),
+                "product_settings" => maybe_unserialize(get_option('ee_options')),
                 "update_date" => date("Y-m-d")
               ),
               "store" => array(
@@ -124,7 +124,7 @@ class CustomApi{
                 "Authorization: Bearer ".$this->token,
                 "Content-Type" => "application/json"
             );
-            $ee_options_data = unserialize(get_option('ee_options'));
+            $ee_options_data = maybe_unserialize(get_option('ee_options'));
             if($subscription_id == null && isset($ee_options_data['subscription_id'])) {
                 $subscription_id = sanitize_text_field($ee_options_data['subscription_id']);
             } 

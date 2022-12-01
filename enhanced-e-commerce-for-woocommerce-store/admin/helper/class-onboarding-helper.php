@@ -53,7 +53,7 @@ if(!class_exists('Conversios_Onboarding_Helper')):
     }
 
     public function ee_ut_crons() {
-        $google_detail = unserialize(get_option('ee_api_data'));
+        $google_detail = maybe_unserialize(get_option('ee_api_data'));
         if(isset($google_detail['setting']->refresh_token)){
             $refresh_token = sanitize_text_field(base64_decode($google_detail['setting']->refresh_token));
         }
@@ -325,7 +325,7 @@ if(!class_exists('Conversios_Onboarding_Helper')):
      * @since    4.0.2
      */
     public function save_wp_setting_from_subscription_api($api_obj, $tvc_data, $subscription_id, $data){ 
-      $old_setting = unserialize(get_option('ee_options')); 
+      $old_setting = maybe_unserialize(get_option('ee_options')); 
       $TVC_Admin_Helper = new TVC_Admin_Helper(); 
       $google_detail = $api_obj->getSubscriptionDetails($tvc_data, $subscription_id);
       /**

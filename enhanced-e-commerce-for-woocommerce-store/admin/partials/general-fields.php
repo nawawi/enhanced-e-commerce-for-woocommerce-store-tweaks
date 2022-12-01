@@ -109,7 +109,7 @@ if(isset($_POST['ee_submit_plugin'])){
   $class='alert-message tvc-alert-success';
   $message_p = esc_html__( 'Your settings have been saved.', 'enhanced-e-commerce-for-woocommerce-store' );    
 }
-$data = unserialize(get_option('ee_options'));
+$data = maybe_unserialize(get_option('ee_options'));
 $this->current_customer_id = $TVC_Admin_Helper->get_currentCustomerId();
 $subscription_id = $TVC_Admin_Helper->get_subscriptionId();
 if(!$subscription_id){
